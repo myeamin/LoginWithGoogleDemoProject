@@ -71,11 +71,11 @@ public class Login extends AppCompatActivity {
                         .addCredentialOption(signInOption)
                         .build();
 
-        loginButton.setOnClickListener(v -> requestCredential());
+        loginButton.setOnClickListener(v -> requestLoginWithGoogle());
     }
 
 
-    private void requestCredential() {
+    private void requestLoginWithGoogle() {
 
         credentialManager.getCredentialAsync(
                 this,
@@ -98,6 +98,7 @@ public class Login extends AppCompatActivity {
 
                             AuthCredential authCredential =
                                     GoogleAuthProvider.getCredential(idToken, null);
+
 
                             mAuth.signInWithCredential(authCredential)
                                     .addOnSuccessListener(authResult -> {
